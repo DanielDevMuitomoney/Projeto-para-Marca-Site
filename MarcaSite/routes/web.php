@@ -18,9 +18,13 @@ use App\Http\Controllers\Form\FormAuthController;
 Route::get('/', function () {
     return view('vw_home');
 })->name('site.home');
-#->FORM DE LOGIN
+#->FORM DE CADASTRO
 Route::get('/cadastro',[FormAuthController::class,'ShowRegisterForm'])->name('form.cadastro');
+#->FORM DE LOGIN
 Route::get('/login',[FormAuthController::class,'ShowLoginForm'])->name('form.login');
+
+//<------------END (VIEWS)----------------------------------->
+
 //<------------START POSTS(REQUESTS)-------------------------------->
-#->Cadastrar 
-Route::post('/g',[FormAuthController::class,'']);
+#->CADASTRAR ÚSUARIO
+Route::post('/action_register',[FormAuthController::class,'Register'])->name('action.register');

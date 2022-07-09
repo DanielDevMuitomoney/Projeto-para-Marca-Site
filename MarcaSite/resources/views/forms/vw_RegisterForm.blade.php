@@ -34,23 +34,43 @@
 <h1>Cadastro de úsuarios</h1>
 
 <div class="container">
-    <form action="" method="post">
-        <input class="form-control" type="text" placeholder="Nome Completo" aria-label="default input example">
-        <input class="form-control" type="text" placeholder="Email" aria-label="default input example">
-        <select class="form-select" aria-label="Default select example">
-     <option selected>Selecione o tipo de úsuario</option>
-     <option value="1">Aluno</option>
+    <form  name="registerform">
+        @csrf
+        <input class="form-control" type="text" placeholder="Nome Completo" aria-label="default input example" name="name">
+        <input class="form-control" type="text" placeholder="Email" aria-label="default input example" name="email">
+        <select class="form-select" aria-label="Default select example" name="select">
+     <option selected value="1">Aluno</option>
      <option value="2">Adiministrador</option>
     </select>
-    <input class="form-control" type="text" placeholder="Senha" >
-    <input class="form-control" type="text" placeholder="Confirmação de Senha" >
-    <button type="button" class="btn btn-success">Cadastrar</button>
+    <input class="form-control" type="text" placeholder="Senha" name="password1" >
+    <input class="form-control" type="text" placeholder="Confirmação de Senha" name="password2" >
+    <button type="submit" class="btn btn-success">Cadastrar</button>
 
 
     </form>
 </div>
 
-
-
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script>
+    $(function(){
+        //pega html obj
+        $('form[name="registerform"]').submit(function(){
+            //previne que a página de refresh;
+            event.preventDefault();
+            //ajax do jquery
+            $.ajax(
+                {
+                    url:"{{route('action.register')}}",
+                    type:"post",
+                    data: $(this).serialize(),
+                    dataType:'json',
+                    success: function(data) 
+                    {
+                        console.log(data);
+                    }
+                });
+        });
+    });
+</script>
 </body>
 </html>
