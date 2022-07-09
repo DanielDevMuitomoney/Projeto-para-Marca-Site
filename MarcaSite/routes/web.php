@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Form\FormAuthController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//<------------START (VIEWS)-------------------------------->
+#->HOME
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('vw_home');
+})->name('site.home');
+#->FORM DE LOGIN
+Route::get('/cadastro',[FormAuthController::class,'ShowRegisterForm'])->name('form.cadastro');
+Route::get('/login',[FormAuthController::class,'ShowLoginForm'])->name('form.login');
+//<------------START POSTS(REQUESTS)-------------------------------->
+#->Cadastrar 
+Route::post('/g',[FormAuthController::class,'']);

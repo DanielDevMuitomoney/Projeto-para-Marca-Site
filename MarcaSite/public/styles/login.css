@@ -1,0 +1,23 @@
+a,.navbar-brand,h1,.nav-link,.navbar-nav .nav-link.active, .navbar-nav .show > .nav-link
+{
+    color:white;
+}
+body
+{
+    background-color: gray;
+}
+h1
+{
+    text-align: center;
+}
+.container
+{
+
+    width: 60%;
+    margin-top: 5vh;
+}
+.form-control,select
+{
+    margin-bottom: 2vh;
+}
+
