@@ -8,8 +8,15 @@ use Illuminate\Support\Facades\Auth;
 
 class AcountController extends Controller
 {
+    public function ShowProfile()
+    {
+        return view('internal.user.vw_perfil');
+    }
+
     public function logout()
     {
         Auth::logout();
     }
+
+
 }

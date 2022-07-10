@@ -5,6 +5,8 @@ use App\Http\Controllers\Adm\AdmController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Form\FormAuthController;
 use App\Http\Controllers\Internal\InternalController;
+use Faker\Provider\ar_EG\Internet;
+use Illuminate\Notifications\Action;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +19,7 @@ use App\Http\Controllers\Internal\InternalController;
 |
 */
 
-//<------------START (VIEWS)-------------------------------->
+//<------------START GETS(VIEWS)-------------------------------->
 #->HOME
 Route::get('/', function () {
     return view('vw_home');
@@ -38,6 +40,8 @@ Route::middleware(['verify_adm'])->group(function(){
 Route::middleware(['verifylogin'])->group(function(){
 
     Route::get('/cursos',[InternalController::class,'ShowCursos'])->name('user.cursos');
+    Route::get('/perfil',[AcountController::class,'ShowProfile'])->name('user.profile');
+    Route::get('/incricoes',[InternalController::class,'ShowMinhasIncricoes'])->name('user.incritions');
 });
 
 
