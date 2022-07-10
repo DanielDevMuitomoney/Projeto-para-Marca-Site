@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Form;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 //controller responsável por manter forms
 class FormAuthController extends Controller
@@ -38,10 +40,11 @@ class FormAuthController extends Controller
                                 $user= new User();
                                 $user->name=$request->name;
                                 $user->email=$request->email;
-                                $user->password=$request->password1;
-                                $user->type_user='Aluno';
+                                $user->password=Hash::make($request->password1);
+                                $user->type_user='Comum';
+                                $user->save();
                                 $register['sucess']=true;
-                                $register['menssage']='User cadastrado';
+                                $register['menssage']='Comum';
                                 echo json_encode($register);
                                 }//AVISO: o else não foi utilizado para caso sejam implementados novos tipos de usuários no futuro
                                 else if($request->select==2)
@@ -50,10 +53,11 @@ class FormAuthController extends Controller
                                         $user= new User();
                                         $user->name=$request->name;
                                         $user->email=$request->email;
-                                        $user->password=$request->password1;
+                                        $user->password=Hash::make($request->password1);
                                         $user->type_user='Adm';
                                         $register['sucess']=true;
                                         $register['menssage']='ADM cadastrado';
+                                        $user->save();
                                         echo json_encode($register);
                                 }
                                 else
@@ -77,7 +81,7 @@ class FormAuthController extends Controller
                 else
                 {
                         $register['sucess'] = false;
-                        $register['error']='Preencha todos os campos';
+                        $register['error']='O email informado não é válido';
                         echo json_encode($register);
                         return;
                 }
@@ -85,10 +89,43 @@ class FormAuthController extends Controller
             else
             {
                 $register['sucess'] = false;
-                $register['error']='O email informado não é válido';
+                $register['error']='Preencha todos os campos';
                 echo json_encode($register);
                 return;
             }
         }
+
+        public function login(Request $request)
+        {
+            if(!empty($request->email) && !empty($request->password))
+            {
+
+                $credentials=['email' =>$request->email,
+                'password' =>$request->password,
+                'type_user' =>$request->select        
+            ];
+            
+                
+                if(Auth::attempt($credentials))
+                {
+                    $login['success']=true;
+                    echo json_encode($login);
+                }
+                else
+                {
+                    $login['success']=false;
+                    $login['error']='usuário não encontrado';
+                    echo json_encode($login);
+                    return;
+                }
+                
+                
+            }
+            else
+            {
+                $login['success']=false;
+                $login['error']='Os campos fornecidos estão vazios';
+            }
+        } 
     }
 

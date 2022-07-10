@@ -34,12 +34,16 @@
 <h1>Cadastro de úsuarios</h1>
 
 <div class="container">
+<div id="alert" class="alert alert-danger d-none" role="alert">
+  A simple danger alert—check it out!
+</div>
+
     <form  name="registerform">
         @csrf
         <input class="form-control" type="text" placeholder="Nome Completo" aria-label="default input example" name="name">
         <input class="form-control" type="text" placeholder="Email" aria-label="default input example" name="email">
         <select class="form-select" aria-label="Default select example" name="select">
-     <option selected value="1">Aluno</option>
+     <option selected value="1">Usuário comum</option>
      <option value="2">Adiministrador</option>
     </select>
     <input class="form-control" type="text" placeholder="Senha" name="password1" >
@@ -66,7 +70,18 @@
                     dataType:'json',
                     success: function(data) 
                     {
-                        console.log(data);
+                        if(data.sucess===true)
+                        {
+                            $('#alert').removeClass('alert-danger');
+                            $('#alert').removeClass('d-none');
+                            $('#alert').addClass('alert-success');
+                            $('#alert').html("Seja Bem-Vindo faça login clicando aqui: <a style='color:blue' href='{{route('form.login')}}'>LOGAR</a>")
+                        }
+                        else
+                        {
+                            $('#alert').removeClass('d-none');
+                            $('#alert').html(data.error);
+                        }
                     }
                 });
         });

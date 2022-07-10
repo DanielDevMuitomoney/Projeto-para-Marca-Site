@@ -33,16 +33,43 @@
 <h1>Logar</h1>
 
 <div class="container">
-    <form action="" method="post">
-        <input class="form-control" type="text" placeholder="Email" aria-label="default input example">
+    <form name="loginform">
+        @csrf
+        <input class="form-control" type="text" placeholder="Email" aria-label="default input example" name="email">
       
-    <input class="form-control" type="text" placeholder="Senha" >
-    
-    <button type="button" class="btn btn-success">Cadastrar</button>
+    <input class="form-control" type="text" placeholder="Senha"  name="password">
+    <select class="form-select" aria-label="Default select example" name="select">
+     <option selected value="Comum">Usuário comum</option>
+     <option value="Adm">Adiministrador</option>
+     </select>
+    <button type="submit" class="btn btn-success">logar</button>
 
 
     </form>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script>
+    $(function(){
+        //pega html obj
+        $('form[name="loginform"]').submit(function(){
+            //previne que a página de refresh;
+            event.preventDefault();
+            //ajax do jquery
+            $.ajax(
+                {
+                    url:"{{route('action.login')}}",
+                    type:"post",
+                    data: $(this).serialize(),
+                    dataType:'json',
+                    success: function(data) 
+                    {
+                        console.log(data);
+                    }
+                });
+        });
+    });
+</script>
 
 </body>
 </html>
