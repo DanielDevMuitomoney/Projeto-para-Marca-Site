@@ -7,6 +7,11 @@
     <title>Document</title>
 </head>
 <body>
-    
+@extends('layout.layout')
+
+@section('content')
+<a href="{{route('action.logout')}}">Logout</a>
+@endsection
+
 </body>
 </html>

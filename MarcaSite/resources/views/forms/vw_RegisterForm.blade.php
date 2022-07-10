@@ -9,27 +9,10 @@
     <title>Document</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Marca Site</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{route('form.cadastro')}}">Cadastro</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{route('form.login')}}">Login</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+@extends('layout.layout')
+
+@section('content')
+
 
 <h1>Cadastro de úsuarios</h1>
 
@@ -54,7 +37,7 @@
     </form>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
 <script>
     $(function(){
         //pega html obj
@@ -87,5 +70,6 @@
         });
     });
 </script>
+@endsection
 </body>
 </html>

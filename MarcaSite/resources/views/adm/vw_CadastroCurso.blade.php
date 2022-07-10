@@ -7,7 +7,7 @@
     <title>Cadastro de Cursos</title>
 </head>
 <body>
-    <a href="{{}}">Logout</a>
+    <a href="{{rout('action_logout')}}">Logout</a>
     <h1>Cadastro de Cursos</h1>
 </body>
 </html>

@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class verify_adm
+class verifyLogin
 {
     /**
      * Handle an incoming request.
@@ -17,15 +17,13 @@ class verify_adm
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::check() && Auth::user()->type_user=='Adm')
+        if(Auth::check())
         {
-            
-            return $next($request);
+        return $next($request);
         }
         else
         {
-            return redirect('/login');
+           return redirect('/login');
         }
-        
     }
 }

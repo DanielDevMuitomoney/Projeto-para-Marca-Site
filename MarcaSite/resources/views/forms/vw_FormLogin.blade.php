@@ -9,30 +9,15 @@
     <title>Document</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Marca Site</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{route('form.cadastro')}}">Cadastro</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{route('form.login')}}">Login</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+@extends('layout.layout')
+
+@section('content')
 <h1>Logar</h1>
 
 <div class="container">
+<div class="alert alert-danger d-none" role="alert" id="alert">
+  This is a danger alert—check it out!
+</div>
     <form name="loginform">
         @csrf
         <input class="form-control" type="text" placeholder="Email" aria-label="default input example" name="email">
@@ -64,12 +49,21 @@
                     dataType:'json',
                     success: function(data) 
                     {
-                        console.log(data);
+                        if(data.success===true)
+                        {
+                            window.location.href="/cursos";
+                        }
+                        else
+                        {
+                            $('#alert').removeClass('d-none');
+                            $('#alert').html(data.error)
+                        }
                     }
                 });
         });
     });
 </script>
+@endsection
 
 </body>
 </html>

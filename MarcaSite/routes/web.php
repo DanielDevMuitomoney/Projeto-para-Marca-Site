@@ -32,8 +32,15 @@ Route::middleware(['verify_adm'])->group(function(){
 
     Route::get('/adm/cadastroCursos',[AdmController::class,'ShowCadastroCurso'])->name('adm.cadastro.cursos');
 
+});
+
+//Middleware Group responsável pela verificação de úsuarios em geral no sistema
+Route::middleware(['verifylogin'])->group(function(){
+
     Route::get('/cursos',[InternalController::class,'ShowCursos'])->name('user.cursos');
 });
+
+
 //<------------END (VIEWS)----------------------------------->
 
 //<------------START POSTS(REQUESTS)-------------------------------->
@@ -41,4 +48,6 @@ Route::middleware(['verify_adm'])->group(function(){
 Route::post('/action_register',[FormAuthController::class,'Register'])->name('action.register');
 #->LOGAR USUÁRIO
 Route::post('/action_login',[FormAuthController::class,'login'])->name('action.login');
+
+
 Route::get('/action_logout',[AcountController::class,'logout'])->name('action.logout');
