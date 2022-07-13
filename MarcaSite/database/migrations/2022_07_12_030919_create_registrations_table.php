@@ -13,19 +13,20 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cursos', function (Blueprint $table) {
+        Schema::create('registrations', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('fk_user');
-            $table->string('titulo',90);
-            $table->string('Descricão',90);
-            $table->string('img_path',110);
-            $table->decimal('preco');
-            $table->date('dt_inicio');
-            $table->date('dt_final');
-            $table->integer('qtd_maxAlunos');
+            $table->unsignedBigInteger('fk_curso');
+            $table->date('dt_register');
+            $table->enum('status',['Pago,Pendente,Cancelado']);
+            
+
+
             $table->timestamps();
 
             $table->foreign('fk_user')->references('id')->on('users');
+            $table->foreign('fk_curso')->references('id')->on('cursos');
+
         });
     }
 
@@ -36,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cursos');
+        Schema::dropIfExists('registrations');
     }
 };

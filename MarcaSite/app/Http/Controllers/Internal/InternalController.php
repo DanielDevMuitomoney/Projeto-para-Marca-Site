@@ -21,4 +21,12 @@ class InternalController extends Controller
     {
         return view('internal.user.vw_MinhasInscricoes');
     }
+    public function ShowCurso(curso $id)
+    {
+
+        return view('internal.cursos.vw_VerCurso',
+        [
+            'curso'=>$id
+        ]);
+    }
 }

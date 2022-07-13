@@ -49,7 +49,11 @@
                     dataType:'json',
                     success: function(data) 
                     {
-                        if(data.success===true)
+                        if(data.success===true && data.menssage=='ADM')
+                        {
+                            window.location.href="/adm";
+                        }
+                        else if(data.success===true && data.menssage=='Comum')
                         {
                             window.location.href="/cursos";
                         }

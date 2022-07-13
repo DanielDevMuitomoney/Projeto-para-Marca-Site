@@ -13,17 +13,30 @@
 <h1>Bem vindo ao seu perfil</h1>
 
 <div class="container">
+<div class="alert alert-warning" role="alert">
+  <h4 class="alert-heading">Aviso</h4>
+  <p>Estas informações serão utilizadas em suas incrições, por tanto é de extrema importância que os dados fornecidos estejam de acordo com a realidade</p>
+  <hr>
+  <p class="mb-0">Em caso de fraude informacional suas inscrição poderá ser suspensa, caso altere alguma informação após uma inscrição o sistema alterará  as informações em todas as demais incrições</p>
+</div>
 <form  name="registerform">
         @csrf
-        <input class="form-control" type="text" placeholder="Nome Completo" aria-label="default input example" name="name">
-        <input class="form-control" type="text" placeholder="Email" aria-label="default input example" name="email">
+        <input class="form-control" type="text" placeholder="Nome Completo" aria-label="default input example" name="name" disabled>
+        <input class="form-control" type="text" placeholder="Email" aria-label="default input example" name="email" disabled>
+        <input class="form-control" type="text" placeholder="CPF" aria-label="default input example" name="email" >
         <select class="form-select" aria-label="Default select example" name="select">
-     <option selected value="1">Usuário comum</option>
+     <option selected value="1">Estado</option>
      <option value="2">Adiministrador</option>
     </select>
-    <input class="form-control" type="text" placeholder="Senha" name="password1" >
-    <input class="form-control" type="text" placeholder="Confirmação de Senha" name="password2" >
-    <button type="submit" class="btn btn-success">Cadastrar</button>
+
+    <input class="form-control" type="tel" placeholder="Cidade" aria-label="default input example" name="city">
+
+    <select class="form-select" aria-label="Default select example" name="select">
+     <option selected value="1">Estudante</option>
+     <option value="2">Profissional</option>
+     <option value="2">Associado</option>
+    </select>
+    <button type="submit" class="btn btn-success">Atualizar</button>
 
 
     </form>

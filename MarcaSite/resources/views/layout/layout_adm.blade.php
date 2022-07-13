@@ -10,7 +10,7 @@
           <a class="nav-link active" aria-current="page" href="{{route('user.cursos')}}">Meus Cursos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{route('form.cadastro')}}">Criar Curso</a>
+          <a class="nav-link" href="{{route('adm.cadastro.cursos')}}">Criar Curso</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{route('user.profile')}}">Perfil</a>

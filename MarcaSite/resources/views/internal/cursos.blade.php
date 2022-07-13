@@ -25,7 +25,7 @@
     <div class="card-body">
       <h5 class="card-title">{{$c->titulo}}</h5>
       <p class="card-text">{{$c->Descricão}}</p>
-      <a href="/cursos/{{$c->id}}"><button type="button" class="btn btn-primary">Acessar</button></a>
+      <a href="/curso/{{$c->id}}"><button type="button" class="btn btn-primary">Acessar</button></a>
 
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>

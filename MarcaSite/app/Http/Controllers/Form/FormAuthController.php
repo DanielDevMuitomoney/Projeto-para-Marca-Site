@@ -106,10 +106,20 @@ class FormAuthController extends Controller
             ];
             
                 
-                if(Auth::attempt($credentials))
+                if(Auth::attempt($credentials) )
                 {
+                    if(Auth::user()->type_user=="Adm")
+                    {
                     $login['success']=true;
+                    $login['menssage']='ADM';
                     echo json_encode($login);
+                    }
+                    else
+                    {
+                        $login['success']=true;
+                        $login['menssage']='Comum';
+                        echo json_encode($login);
+                    }
                 }
                 else
                 {
