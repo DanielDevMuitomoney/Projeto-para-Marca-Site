@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\curso;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AdmController extends Controller
 {
@@ -19,6 +20,7 @@ class AdmController extends Controller
     {
         $user=User::where('id',Auth::User()->id)->first();
         $meus_cursos= $user->cursos()->get();
+        
         return view('adm.vw_MeusCursos',
         [
             'my_cursos' =>$meus_cursos
@@ -27,6 +29,20 @@ class AdmController extends Controller
     public function ShowAdmHome()
     {
         return view('adm.vw_HomeAdm');
+    }
+    public function ShowTable($id_curso)
+    {
+        $table= DB::table('registrations')->join('users','registrations.fk_user','=','users.id')
+        ->join('cursos','registrations.fk_curso','=','cursos.id')
+        ->where('fk_curso','=',$id_curso)
+        ->get(); 
+       $curso=Curso::where('id','=',$id_curso)->first();
+         
+        return view('adm.vw_Table',
+        [
+            'tb'=> $table,
+            'curso' => $curso
+        ]);
     }
     //Requests
     public function Create_Curse(Request $request)
@@ -43,4 +59,5 @@ class AdmController extends Controller
         $create_cursos->save();
 
     }
+
 }

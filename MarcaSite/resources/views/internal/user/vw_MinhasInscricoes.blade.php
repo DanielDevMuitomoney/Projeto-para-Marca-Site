@@ -12,6 +12,22 @@
 
     @section('content')
     <div class="container">
+    <h1 style="text-align: center;">Cursos onde sou inscrito</h1>
+        @foreach($registers as $r)
+        <div class="card-group">
+            <div class="card" style="margin: 1%;border: solid 1px;">
+                <img src="" class="card-img-top" alt="...">
+                <div class="card-body">
+                <h5 class="card-title">{{$r->titulo}}</h5>
+                <p class="card-text">{{$r->Descricão}}</p>
+                <a href="/curso/{{$r->fk_curso}}"><button type="button" class="btn btn-primary">Acessar</button></a>
+
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                
+                </div>
+            </div>
+        @endforeach
+        </div>
 
     </div>
     @endsection

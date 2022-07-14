@@ -17,10 +17,7 @@ class InternalController extends Controller
             'cursos' => $cursos,
         ]);
     }
-    public function ShowMinhasIncricoes()
-    {
-        return view('internal.user.vw_MinhasInscricoes');
-    }
+
     public function ShowCurso(curso $id)
     {
 

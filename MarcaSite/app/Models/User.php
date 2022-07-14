@@ -45,7 +45,7 @@ class User extends Authenticatable
 
     public function cursos()
     {
-        return $this->hasOne(curso::class,'fk_user','id');
+        return $this->hasMany(curso::class,'fk_user','id');
     }
     public function registrations()
     {

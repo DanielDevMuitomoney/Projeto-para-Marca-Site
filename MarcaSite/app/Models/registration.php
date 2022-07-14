@@ -11,5 +11,6 @@ class registration extends Model
     protected $table='registrations';
 
 
+
 }
 

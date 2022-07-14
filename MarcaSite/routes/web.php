@@ -35,9 +35,9 @@ Route::get('/login',[FormAuthController::class,'ShowLoginForm'])->name('form.log
 Route::middleware(['verify_adm'])->group(function(){
 
     Route::get('/adm/cadastroCursos',[AdmController::class,'ShowCadastroCurso'])->name('adm.cadastro.cursos');
-    Route::get('/meus-cursos',[AdmController::class,'ShowMeusCursos']);
+    Route::get('/meus-cursos',[AdmController::class,'ShowMeusCursos'])->name('adm.cursos');
     Route::get('/adm',[AdmController::class,'ShowAdmHome'])->name('adm.home');
-
+    Route::get('/tabela/{id_curso}',[AdmController::class,'ShowTable'])->name('adm.table');
 });
 
 //Middleware Group responsável pela verificação de úsuarios em geral no sistema
@@ -45,7 +45,7 @@ Route::middleware(['verifylogin'])->group(function(){
 
     Route::get('/cursos',[InternalController::class,'ShowCursos'])->name('user.cursos');
     Route::get('/perfil',[AcountController::class,'ShowProfile'])->name('user.profile');
-    Route::get('/incricoes',[InternalController::class,'ShowMinhasIncricoes'])->name('user.incritions');
+    Route::get('/incricoes',[UserController::class,'ShowMinhasIncricoes'])->name('user.incritions');
     Route::get('/curso/{id}',[InternalController::class,'ShowCurso'])->name('user.curso');
 
 

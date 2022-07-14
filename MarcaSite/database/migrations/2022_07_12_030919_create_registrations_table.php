@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('fk_user');
             $table->unsignedBigInteger('fk_curso');
             $table->date('dt_register');
-            $table->enum('status',['Pago,Pendente,Cancelado']);
+            $table->enum('status',['pago','pendente','cancelado']);
             
 
 

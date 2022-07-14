@@ -11,6 +11,7 @@
 @extends('layout.layout_adm')
 @section('content')
     <div class="container">
+<h1 style="text-align:center;">Cursos criados por você</h1>
         <div class="card-group">
 
     @foreach($my_cursos as $mc)
@@ -22,7 +23,7 @@
       <p class="card-text">{{$mc->Descricão}}</p>
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
       <button type="button" class="btn btn-info">Editar</button>
-      <button type="button" class="btn btn-primary">Ver</button>
+      <a href="/tabela/{{$mc->id}}"><button type="button" class="btn btn-primary">Ver</button></a>
 
 
     </div>

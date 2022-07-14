@@ -12,6 +12,10 @@
 
     @section('content')
 <div class="container">
+<div class="alert alert-danger d-none" role="alert" id="alert">
+  A simple danger alert—check it out!
+</div>
+
 <div class="card" style="width: 100%;">
 
 <form name="inscrever">
@@ -54,7 +58,11 @@
                     {
                         if(data.success===true)
                         {
-                            window.location.href="/adm";
+                            $('#alert').removeClass('alert-danger');
+                            $('#alert').removeClass('d-none');
+                            $('#alert').addClass('alert-success');
+                            $('#alert').html('Sua inscrição foi realizada com sucesso');
+                            
                         }
                         else
                         {

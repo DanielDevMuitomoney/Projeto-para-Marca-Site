@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{{route('user.cursos')}}">Meus Cursos</a>
+          <a class="nav-link active" aria-current="page" href="{{route('adm.cursos')}}">Meus Cursos</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{route('adm.cadastro.cursos')}}">Criar Curso</a>
