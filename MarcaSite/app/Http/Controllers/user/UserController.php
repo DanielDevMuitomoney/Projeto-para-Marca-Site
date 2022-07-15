@@ -7,6 +7,7 @@ use App\Models\registration;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redis;
 
 class UserController extends Controller
 {
@@ -50,5 +51,13 @@ class UserController extends Controller
         [
             'registers'=> $registers,
         ]);
+    }
+
+
+    public function Update_profile( Request $request)
+
+    {
+        $user = new User();
+        
     }
 }

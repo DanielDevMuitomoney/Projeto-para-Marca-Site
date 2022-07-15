@@ -19,7 +19,7 @@
   <hr>
   <p class="mb-0">Em caso de fraude informacional suas inscrição poderá ser suspensa, caso altere alguma informação após uma inscrição o sistema alterará  as informações em todas as demais incrições</p>
 </div>
-<form  name="registerform">
+<form  name="profile_form">
         @csrf
         <input class="form-control" type="text" placeholder="Nome Completo" aria-label="default input example" name="name" value="{{$infos->name}}" disabled>
         <input class="form-control" type="text" placeholder="Email" aria-label="default input example" name="email" disabled value="{{$infos->email}}">
@@ -77,25 +77,13 @@
             //ajax do jquery
             $.ajax(
                 {
-                    url:"{{route('action.login')}}",
+                    url:"{{route('user.up.perfil')}}",
                     type:"post",
                     data: $(this).serialize(),
                     dataType:'json',
                     success: function(data) 
                     {
-                        if(data.success===true && data.menssage=='ADM')
-                        {
-                            window.location.href="/adm";
-                        }
-                        else if(data.success===true && data.menssage=='Comum')
-                        {
-                            window.location.href="/cursos";
-                        }
-                        else
-                        {
-                            $('#alert').removeClass('d-none');
-                            $('#alert').html(data.error)
-                        }
+                        
                     }
                 });
         });
