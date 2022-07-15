@@ -21,8 +21,8 @@
 </div>
 <form  name="registerform">
         @csrf
-        <input class="form-control" type="text" placeholder="Nome Completo" aria-label="default input example" name="name" disabled>
-        <input class="form-control" type="text" placeholder="Email" aria-label="default input example" name="email" disabled>
+        <input class="form-control" type="text" placeholder="Nome Completo" aria-label="default input example" name="name" value="{{$infos->name}}" disabled>
+        <input class="form-control" type="text" placeholder="Email" aria-label="default input example" name="email" disabled value="{{$infos->email}}">
         <input class="form-control" type="text" placeholder="CPF" aria-label="default input example" name="email" >
         <select class="form-select" aria-label="Default select example" name="select">
      <option selected value="1">Estado</option>
@@ -32,15 +32,75 @@
     <input class="form-control" type="tel" placeholder="Cidade" aria-label="default input example" name="city">
 
     <select class="form-select" aria-label="Default select example" name="select">
-     <option selected value="1">Estudante</option>
-     <option value="2">Profissional</option>
-     <option value="2">Associado</option>
+     <option selected value="AC">AC</option>
+     <option value="AL">AL</option>
+     <option value="AP">AP</option>
+     <option value="AM">AM</option>
+     <option value="BA">BA</option>
+     <option value="CE">CE</option>
+     <option value="ES">ES</option>
+     <option value="GO">GO</option>
+     <option value="MA">MA</option>
+     <option value="MT">MT</option>
+     <option value="MS">MS</option>
+     <option value="MG">MG</option>
+     <option value="PA">PA</option>
+     <option value="PB">PB</option>
+     <option value="PR">PR</option>
+     <option value="PE">PE</option>
+     <option value="PI">PI</option>
+     <option value="RJ">RJ</option>
+     <option value="RN">RN</option>
+     <option value="RS">RS</option>
+     <option value="RO">RO</option>
+     <option value="RR">RR</option>
+     <option value="SC">SC</option>
+     <option value="SP">SP</option>
+     <option value="SE">SE</option>
+     <option value="TO">TO</option>
+     <option value="DF">DF</option>
+
     </select>
     <button type="submit" class="btn btn-success">Atualizar</button>
 
 
     </form>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script>
+    $(function(){
+        //pega html obj
+        $('form[name="loginform"]').submit(function(){
+            //previne que a página de refresh;
+            event.preventDefault();
+            //ajax do jquery
+            $.ajax(
+                {
+                    url:"{{route('action.login')}}",
+                    type:"post",
+                    data: $(this).serialize(),
+                    dataType:'json',
+                    success: function(data) 
+                    {
+                        if(data.success===true && data.menssage=='ADM')
+                        {
+                            window.location.href="/adm";
+                        }
+                        else if(data.success===true && data.menssage=='Comum')
+                        {
+                            window.location.href="/cursos";
+                        }
+                        else
+                        {
+                            $('#alert').removeClass('d-none');
+                            $('#alert').html(data.error)
+                        }
+                    }
+                });
+        });
+    });
+</script>
     @endsection
 </body>
 </html>

@@ -12,7 +12,7 @@
 @extends('layout.layout_user')
 @section('content')
 <div class="alert alert-warning" role="alert">
-  É necessário completar suas informações para a inscrição em cursos <a href="#" class="alert-link">Clique aqui para completar seu cadastro</a>. Agradeçemos pela atenção
+  É necessário completar suas informações para a inscrição em cursos <a href="/perfil" class="alert-link">Clique aqui para completar seu cadastro</a>. Agradeçemos pela atenção
 </div>
 
 <a href="{{route('action.logout')}}">Logout</a>

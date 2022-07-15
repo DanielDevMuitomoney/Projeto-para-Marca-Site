@@ -65,3 +65,5 @@ Route::get('/action_logout',[AcountController::class,'logout'])->name('action.lo
 Route::post('/action_create_curse',[AdmController::class,'Create_Curse'])->name('action.create_curse');
 #->Registrar Inscrição
 Route::post('/registrar_inscricao',[UserController::class,'register_inscricao'])->name('action.registrar.inscricao');
+#->Atualizar Perfil
+Route::post('/update_perfil',UserController::class,'Update_profile')->name('user.up.perfil');

@@ -29,8 +29,8 @@
      <option selected value="1">Usuário comum</option>
      <option value="2">Adiministrador</option>
     </select>
-    <input class="form-control" type="text" placeholder="Senha" name="password1" >
-    <input class="form-control" type="text" placeholder="Confirmação de Senha" name="password2" >
+    <input class="form-control" type="password" placeholder="Senha" name="password1" >
+    <input class="form-control" type="password" placeholder="Confirmação de Senha" name="password2" >
     <button type="submit" class="btn btn-success">Cadastrar</button>
 
 
