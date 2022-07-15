@@ -66,4 +66,4 @@ Route::post('/action_create_curse',[AdmController::class,'Create_Curse'])->name(
 #->Registrar Inscrição
 Route::post('/registrar_inscricao',[UserController::class,'register_inscricao'])->name('action.registrar.inscricao');
 #->Atualizar Perfil
-Route::post('/update_perfil',UserController::class,'Update_profile')->name('user.up.perfil');
+Route::post('/update_perfil',[UserController::class,'Update_profile'])->name('user.up.perfil');

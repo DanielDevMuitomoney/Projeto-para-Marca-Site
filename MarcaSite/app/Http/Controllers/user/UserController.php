@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redis;
+use Mockery\Matcher\Any;
 
 class UserController extends Controller
 {
@@ -57,7 +58,25 @@ class UserController extends Controller
     public function Update_profile( Request $request)
 
     {
-        $user = new User();
+        $user = new User;
+      
+        if(!empty($request->cpf)&& !empty($request->funcao))
+        {
+            $user->cpf =$request->cpf;
+            $user->funcao= $request->funcao;
+            $user->update();
+            $data['success']=true;
+            $data['message']='Perfil atualizado';
+            echo json_encode($data);
+
+        }
+        else
+        {
+            $data['message']='Campos inválidos';
+            return;
+        }
         
+        
+
     }
 }

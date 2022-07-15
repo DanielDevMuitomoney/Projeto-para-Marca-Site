@@ -13,6 +13,12 @@
 <h1>Bem vindo ao seu perfil</h1>
 
 <div class="container">
+
+<div class="alert alert-primary d-none" id="alert" role="alert">
+  A simple primary alert—check it out!
+</div>
+
+
 <div class="alert alert-warning" role="alert">
   <h4 class="alert-heading">Aviso</h4>
   <p>Estas informações serão utilizadas em suas incrições, por tanto é de extrema importância que os dados fornecidos estejam de acordo com a realidade</p>
@@ -23,15 +29,16 @@
         @csrf
         <input class="form-control" type="text" placeholder="Nome Completo" aria-label="default input example" name="name" value="{{$infos->name}}" disabled>
         <input class="form-control" type="text" placeholder="Email" aria-label="default input example" name="email" disabled value="{{$infos->email}}">
-        <input class="form-control" type="text" placeholder="CPF" aria-label="default input example" name="email" >
-        <select class="form-select" aria-label="Default select example" name="select">
-     <option selected value="1">Estado</option>
-     <option value="2">Adiministrador</option>
+        <input class="form-control" value="234.234.232-09" type="text" placeholder="CPF" aria-label="default input example" name="cpf" >
+        <select class="form-select" aria-label="Default select example" name="funcao">
+     <option selected value="Estudante">Estudante</option>
+     <option value="Associado">Associado</option>
+     <option value="Profissional">Profissional</option>
     </select>
 
-    <input class="form-control" type="tel" placeholder="Cidade" aria-label="default input example" name="city">
+    <input class="form-control" type="text" placeholder="Cidade" aria-label="default input example" name="cidade">
 
-    <select class="form-select" aria-label="Default select example" name="select">
+    <select class="form-select" aria-label="Default select example" name="estado">
      <option selected value="AC">AC</option>
      <option value="AL">AL</option>
      <option value="AP">AP</option>
@@ -71,7 +78,7 @@
 <script>
     $(function(){
         //pega html obj
-        $('form[name="loginform"]').submit(function(){
+        $('form[name="profile_form"]').submit(function(){
             //previne que a página de refresh;
             event.preventDefault();
             //ajax do jquery
@@ -83,7 +90,17 @@
                     dataType:'json',
                     success: function(data) 
                     {
-                        
+                        if(data.success===true)
+                        {
+                            $('#alert').removeClass('d-none');
+                            $('#alert').html(data.message);
+
+                        }
+                        else
+                        {
+                            $('#alert').removeClass('d-none');
+                            $('#alert').html(data.messagpp);
+                        }
                     }
                 });
         });

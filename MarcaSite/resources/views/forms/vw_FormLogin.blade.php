@@ -22,7 +22,7 @@
         @csrf
         <input class="form-control" type="text" placeholder="Email" aria-label="default input example" name="email">
       
-    <input class="form-control" type="text" placeholder="Senha"  name="password">
+    <input class="form-control" type="password" placeholder="Senha"  name="password">
     <select class="form-select" aria-label="Default select example" name="select">
      <option selected value="Comum">Usuário comum</option>
      <option value="Adm">Adiministrador</option>

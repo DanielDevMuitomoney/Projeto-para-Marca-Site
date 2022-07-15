@@ -58,6 +58,9 @@ class AdmController extends Controller
         $create_cursos->qtd_maxAlunos=$request->qtd_max;
         $create_cursos->save();
 
+        $data['success']=true;
+        echo json_encode($data);
+
     }
 
 }
